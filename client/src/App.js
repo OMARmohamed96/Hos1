@@ -1,36 +1,45 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router} from 'react-router-dom' ;
-import {Route, Link, NavLink} from 'react-router-dom';
-import SignUpForm from './pages/SignUpForm';
-import SignInForm from './pages/SignInForm';
-import logo from './logo.png';
-import './App.css';
+import { Router, Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import { history } from './helpers/history';
+import { alertClear } from './actions/alertActions';
+import Header from './components/Header';
+import Home from './components/Home';
+
+// import './App.css';
 
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    const { dispatch } = this.props;
+    history.listen((location, action) => {
+        // clear alert on location change
+        dispatch(alertClear());
+    });
+  }
+
   render() {
+    const { alert } = this.props;
     return (
-      <Router>
-      <div className="App">
-       <div className="App__Aside"><img src={logo} alt="app_logo" />;</div>
-       <div className="App__Form">
-         <div className = "PageSwitcher">
-           <NavLink to ="/SignIn"  activeClassName="PageSwitcher__Item--Active" className ="PageSwitcher__Item ">Sign In</NavLink>
-           <NavLink exact to ="/" activeClassName="PageSwitcher__Item--Active" className ="PageSwitcher__Item ">Sign Up</NavLink>
-         </div>
-         <div className="FormTitle">
-           <NavLink to="/SignIn" activeClassName="FormTitle__Link--Active" className ="FormTitle__Link ">Sign In
-           </NavLink> or <NavLink exact to= "/" activeClassName="FormTitle__Link--Active"  className ="FormTitle__Link  ">Sign Up</NavLink>
-         </div>
-
-        <Route exact path="/" component={SignUpForm} ></Route>
-        <Route path="/SignIn" component={SignInForm}></Route>
-
-       </div>
-      </div>
+      <Router history={history}>
+        {/* <Header /> */}
+        {/* {alert.message && <div className={`alert ${alert.type}`}>{alert.message}</div>} */}
+        <Switch>
+          <Route exact path="/" component={Home}></Route>
+          {/* <Route exact path="/inventory" component={Inventory}></Route> */}
+        </Switch>
       </Router>
     );
   }
 }
+function mapStateToProps(state) {
+    const { alert } = state;
+    return {
+        alert
+    };
+}
 
-export default App;
+export default connect(mapStateToProps)(App);

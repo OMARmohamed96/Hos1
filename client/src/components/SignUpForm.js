@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import '../App.css';
 
 class SignUpForm extends Component {
 
@@ -9,7 +10,7 @@ class SignUpForm extends Component {
         super();
 
         this.state = {
-            email: '',
+            username: '',
             password: '',
             name: ''
         };
@@ -35,6 +36,7 @@ class SignUpForm extends Component {
         });
     }
     render() {
+        console.log("sign uuuup");
         return (
             <div className="FormCenter">
             <form onSubmit={this.handleSubmit} className="FormFields">
@@ -47,10 +49,10 @@ class SignUpForm extends Component {
                 <input type="password" id="password" className="FormField__Input" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange} />
               </div>
               <div className="FormField">
-                <label className="FormField__Label" htmlFor="email">E-Mail Address</label>
-                <input type="email" id="email" className="FormField__Input" placeholder="Enter your email" name="email" value={this.state.email} onChange={this.handleChange} />
+                <label className="FormField__Label" htmlFor="username">Username</label>
+                <input type="text" id="username" className="FormField__Input" placeholder="Enter your username" name="username" value={this.state.username} onChange={this.handleChange} />
               </div>
-             
+
 
            <div className="FormField">
 

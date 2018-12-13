@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import '../App.css';
+
 class SignInForm extends Component {
   constructor()
   {
       super();
       this.state = {
-          email:'',
+          username:'',
           password:''
       };
       this.handleChange = this.handleChange.bind(this);
@@ -30,12 +32,13 @@ class SignInForm extends Component {
   }
 
     render() {
+      console.log("sign iiin");
         return (
         <div className="FormCenter">
             <form onSubmit={this.handleSubmit} className="FormFields" onSubmit={this.handleSubmit}>
             <div className="FormField">
-                <label className="FormField__Label" htmlFor="email">E-Mail Address</label>
-                <input type="email" id="email" className="FormField__Input" placeholder="Enter your email" name="email" value={this.state.email} onChange={this.handleChange} />
+                <label className="FormField__Label" htmlFor="username">Username</label>
+                <input type="text" id="username" className="FormField__Input" placeholder="Enter your username" name="username" value={this.state.username} onChange={this.handleChange} />
               </div>
 
               <div className="FormField">
@@ -45,7 +48,7 @@ class SignInForm extends Component {
 
               <div className="FormField">
                   <button className="FormField__Button mr-20">Sign In</button>
-                  <NavLink to="/" className="FormField__Link">Create an account </NavLink >
+                  <NavLink to="/" className="FormField__Link">Create an account </NavLink>
               </div>
             </form>
           </div>

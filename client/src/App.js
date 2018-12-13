@@ -8,6 +8,7 @@ import Header from './components/Header';
 import Home from './components/Home';
 import SignInForm from './components/SignInForm';
 import SignUpForm from './components/SignUpForm';
+import Inventory from './components/Inventory';
 
 // import './App.css';
 
@@ -28,13 +29,14 @@ class App extends Component {
     const { alert } = this.props;
     return (
       <Router history={history}>
-        {/* <Header /> */}
-        {/* {alert.message && <div className={`alert ${alert.type}`}>{alert.message}</div>} */}
-        {/* <Switch> */}
-        <Route path="/" component={Home}></Route>
-          {/* <Route exact path="/s" component={SignUpForm}></Route> */}
-          {/* <Route exact path="/inventory" component={Inventory}></Route> */}
-        {/* </Switch> */}
+        <div>
+          <Header />
+          {alert.message && <div className={`alert ${alert.type}`}>{alert.message}</div>}
+          <Switch>
+            <Route path="/" component={Home}></Route>
+            <Route exact path="/home" component={Inventory}></Route>
+          </Switch>
+        </div>
       </Router>
     );
   }

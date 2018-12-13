@@ -27,7 +27,6 @@ export default function(state = initialState, action) {
       };
     case USER_LOGOUT:
     return {
-      users: state.users,
       user: {},
       loggedIn: false
     };

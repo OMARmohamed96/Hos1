@@ -11,7 +11,7 @@ router.post('/signin', urlencodedParser, (req, res) => {
   console.log('body: ');
   console.log(req.body);
   user.signin(req.body.username, req.body.password).then( data => {
-    console.log('user: ' + data.username + ' Signed in successfully.');
+    console.log('User: ' + data.username + ' Signed in successfully.');
     res.json({data, success: true});
   }).catch(err => {
     res.status(400).json({err, success: false});

@@ -6,6 +6,8 @@ import store from './store';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
+import 'bootstrap/dist/css/bootstrap.css';
+
 ReactDOM.render(
   <Provider store={store}>
     <App />

@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 
 const products = require('./routes/api/products');
-
+const users = require('./routes/api/users');
 const app = express();
 
 app.use(bodyParser.json());
@@ -20,6 +20,7 @@ mongoose
 
 // User rouutes
 app.use('/products', products);
+app.use('/users', users);
 
 app.get('/', (req,res) => {
   res.end("welcome.");

@@ -36,7 +36,6 @@ class SignUpForm extends Component {
         });
     }
     render() {
-        console.log("sign uuuup");
         return (
             <div className="FormCenter">
             <form onSubmit={this.handleSubmit} className="FormFields">

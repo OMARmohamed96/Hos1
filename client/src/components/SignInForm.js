@@ -32,27 +32,26 @@ class SignInForm extends Component {
   }
 
     render() {
-      console.log("sign iiin");
-        return (
+      return (
         <div className="FormCenter">
-            <form onSubmit={this.handleSubmit} className="FormFields" onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSubmit} className="FormFields" onSubmit={this.handleSubmit}>
             <div className="FormField">
-                <label className="FormField__Label" htmlFor="username">Username</label>
-                <input type="text" id="username" className="FormField__Input" placeholder="Enter your username" name="username" value={this.state.username} onChange={this.handleChange} />
-              </div>
+              <label className="FormField__Label" htmlFor="username">Username</label>
+              <input type="text" id="username" className="FormField__Input" placeholder="Enter your username" name="username" value={this.state.username} onChange={this.handleChange} />
+            </div>
 
-              <div className="FormField">
-                <label className="FormField__Label" htmlFor="password">Password</label>
-                <input type="password" id="password" className="FormField__Input" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange} />
-              </div>
+            <div className="FormField">
+              <label className="FormField__Label" htmlFor="password">Password</label>
+              <input type="password" id="password" className="FormField__Input" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange} />
+            </div>
 
-              <div className="FormField">
-                  <button className="FormField__Button mr-20">Sign In</button>
-                  <NavLink to="/" className="FormField__Link">Create an account </NavLink>
-              </div>
-            </form>
-          </div>
-        );
+            <div className="FormField">
+              <button className="FormField__Button mr-20">Sign In</button>
+              <NavLink to="/" className="FormField__Link">Create an account </NavLink>
+            </div>
+          </form>
+        </div>
+      );
     }
 }
 

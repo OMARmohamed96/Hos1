@@ -36,7 +36,7 @@ export const register = (user) => dispatch => {
       .then(
           user => {
               dispatch(success());
-              history.push('/'); // redirect user to homepage after registration
+              history.push('/SignIn'); // redirect user to homepage after registration
               dispatch(alertSuccess('Registration successful'));
           },
           error => {

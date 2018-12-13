@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, NavLink, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import SignInForm from './SignInForm';
 import SignUpForm from './SignUpForm';
@@ -8,6 +9,10 @@ import logo from '../logo.png';
 import '../App.css';
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div className="App">
@@ -32,4 +37,6 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = (state) => ({});
+
+export default connect(mapStateToProps)(Home);

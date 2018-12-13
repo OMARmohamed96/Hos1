@@ -6,7 +6,7 @@ const initialState = {
   user: user ? { user } : {},
   loggedIn: user ? true : false
 };
-console.log(initialState);
+// console.log(initialState);
 
 export default function(state = initialState, action) {
   switch (action.type) {

@@ -4,6 +4,8 @@ import { Button } from 'react-bootstrap';
 import filterFactory, { textFilter, Comparator } from 'react-bootstrap-table2-filter';
 import { connect } from 'react-redux';
 import { getProducts, addProduct } from '../actions/productActions';
+import PropTypes from 'prop-types';
+
 
 class Inventory extends Component {
 
@@ -13,47 +15,48 @@ class Inventory extends Component {
   }
 
   componentDidMount() {
-    this.props.getProducts();
+  	this.props.dispatch(getProducts());
   }
 
   columns = [{
-      dataField: 'Id',
+      dataField: 'id',
       text: 'Id',
       classes: 'grey-text text-center',
       filter: textFilter({
         comparator: Comparator.LIKE
       })
     }, {
-      dataField: 'Name',
-      text: 'User Type',
+      dataField: 'name',
+      text: 'Name',
       classes: 'grey-text text-center',
       filter: textFilter({
         comparator: Comparator.LIKE
       })
     }, {
-      dataField: 'Description',
-      text: 'User Type',
+      dataField: 'description',
+      text: 'Description',
       classes: 'grey-text text-center',
       filter: textFilter({
         comparator: Comparator.LIKE
       })
     }, {
-      dataField: 'Quantity',
-      text: 'User Type',
+      dataField: 'quantity',
+      text: 'Quantity',
       classes: 'grey-text text-center',
       filter: textFilter({
         comparator: Comparator.LIKE
       })
-    }, {
+    }
+    , {
       dataField: 'Edit Prodcut',
-      text: 'User Type',
+      text: 'Edit',
       classes: 'grey-text text-center',
       filter: textFilter({
         comparator: Comparator.LIKE
       })
     }, {
       dataField: 'Delete Product',
-      text: 'User Type',
+      text: 'Delete',
       classes: 'grey-text text-center',
       filter: textFilter({
         comparator: Comparator.LIKE
@@ -62,10 +65,12 @@ class Inventory extends Component {
   ];
 
   handleAddProduct() {
-    console.log(this)
     console.log("Button pressed")
-    this.props.dispatch(this.props.addProduct({name: 'product 1', description: 'a7la product', quantity: '33333'}));
+    console.log("Props")
+    console.log(this.props);
+    this.props.dispatch(addProduct({name: 'product 4', description: 'a7la product fl dnya', quantity: '4444'}));
   }
+
 
   render() {
     console.log("Inventory")
@@ -78,7 +83,7 @@ class Inventory extends Component {
               keyField='_id'
               data={ products }
               columns={ this.columns }
-              hover
+              hover	
               condensed
               bordered={ false }
               condensed
@@ -89,8 +94,14 @@ class Inventory extends Component {
   }
 }
 
+
 const mapStateToProps = (state) => ({
   products: state.products
 });
 
-export default connect(mapStateToProps, { getProducts, addProduct })(Inventory);
+Inventory.propTypes = {
+  products: PropTypes.object,
+  dispatch: PropTypes.func
+};
+
+export default connect(mapStateToProps,null)(Inventory);

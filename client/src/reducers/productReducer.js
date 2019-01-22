@@ -8,6 +8,8 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case GET_PRODUCTS:
+    console.log("Getting Products");
+    console.log(state.products);
       return {
         ...state,
         products: action.payload
@@ -15,7 +17,7 @@ export default function(state = initialState, action) {
     case ADD_PRODUCT:
       return {
         ...state,
-        products: [action.payload, ...state.products]
+        products: [action.payload, ...state.products].filter(product => product != undefined)
       };
     case REMOVE_PRODUCT:
       return {

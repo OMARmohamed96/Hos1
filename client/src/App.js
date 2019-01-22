@@ -32,10 +32,12 @@ class App extends Component {
         <div>
           <Header />
           {alert.message && <div className={`alert ${alert.type}`}>{alert.message}</div>}
-          <Switch>
-            <Route path="/" component={Home}></Route>
+          {/* <Switch> */}
+            <Route exact path="/" component={Home}></Route>
+            <Route exact path="/SignIn" component={Home}></Route>
+            <Route exact path="/header" component={Header}></Route>
             <Route exact path="/home" component={Inventory}></Route>
-          </Switch>
+          {/* </Switch> */}
         </div>
       </Router>
     );

@@ -3,8 +3,13 @@ import { Navbar, Nav, NavItem, Modal, Button, Table } from 'react-bootstrap/lib/
 
 class Header extends Component {
   render() {
+    console.log("Header component")
     return (
-      <div></div>
+      <div>
+        {/* <h1> */}
+          {/* THIS IS THE HEADER COMPONENT */}
+        {/* </h1> */}
+      </div>
     )
   }
 }

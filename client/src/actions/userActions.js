@@ -11,7 +11,7 @@ export const login = (username, password) => dispatch => {
       .then(
           user => {
               dispatch(success(user));
-              history.push('/');
+              history.push('/home');
               dispatch(alertSuccess(`Welcome ${user.username}!`));
           },
           error => {

@@ -3,15 +3,19 @@ import { GET_PRODUCTS, ADD_PRODUCT,  REMOVE_PRODUCT} from './types';
 export const getProducts = () => dispatch => {
   fetch('/products/getProducts')
   .then(res => res.json())
-  .then(res =>
+  .then(res => {
+    console.log(res.data);
     dispatch({
       type: GET_PRODUCTS,
       payload: res.data
-    })
+    });
+  }
   );
 };
 
 export const addProduct = productData => dispatch => {
+  console.log("Adding the following product")
+  console.log(productData)
   fetch('/products/addProduct', {  // sending data url
     method: 'POST',
     headers: {

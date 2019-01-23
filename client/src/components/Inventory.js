@@ -6,20 +6,24 @@ import { connect } from 'react-redux';
 import { getProducts, addProduct, removeProduct } from '../actions/productActions';
 import PropTypes from 'prop-types';
 
+import NewProductModal from './NewProductModal';
 
 class Inventory extends Component {
 
   constructor(props) {
     super(props);
-    this.handleAddProduct = this.handleAddProduct.bind(this);
+
+    this.editProduct = this.editProduct.bind(this);
   }
 
   componentDidMount() {
   	this.props.dispatch(getProducts());
   }
 
+
   editProduct(product) {
-    console.log(product);
+    // this.setState({ modalOpen: true });
+    console.log("Opening modal");
   }
 
   deleteProduct(product) {
@@ -29,7 +33,9 @@ class Inventory extends Component {
 
   editButtonFormatter(cell, row, rowIndex, formatExtraData) {
     return (
-      <Button bsStyle="warning" onClick={() => formatExtraData.src.editProduct(row)}>Edit Product</Button>
+      <div>
+        <Button bsStyle="warning" onClick={() => formatExtraData.src.editProduct(row)}>Edit Product</Button>
+      </div>
     );
   }
 
@@ -94,21 +100,13 @@ class Inventory extends Component {
   }
   ];
 
-  handleAddProduct() {
-    console.log("Button pressed")
-    console.log("Props")
-    console.log(this.props);
-    this.props.dispatch(addProduct({name: 'product 4', description: 'a7la product fl dnya', quantity: '4444'}));
-  }
-
-
   render() {
-    console.log("Inventory")
+    console.log("Inventory");
     const { products } = this.props.products;
-    console.log(products);
+
     return (
       <div>
-        <Button bsStyle="success" onClick={this.handleAddProduct}>Add product</Button>
+        <NewProductModal />
         <BootstrapTable
               keyField='_id'
               data={ products }
@@ -118,7 +116,7 @@ class Inventory extends Component {
               bordered={ false }
               condensed
               filter={ filterFactory() }>
-            </BootstrapTable>
+        </BootstrapTable>
       </div>
     )
   }

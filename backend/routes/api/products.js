@@ -8,10 +8,10 @@ const urlencodedParser = bodyParser.urlencoded({ extended: true });
 const products = require('../../product');
 
 router.post('/addProduct', urlencodedParser, (req, res) => {
-  console.log(req.body.name);
+  console.log(req.body.productName);
   console.log(req.body.description);
   console.log(req.body.quantity);
-  products.addProduct(req.body.name, req.body.description, req.body.quantity)
+  products.addProduct(req.body.productName, req.body.description, req.body.quantity)
     .then(data => res.json({ data, success: true}))
     .catch(err => res.json({err, success: false}));
 });

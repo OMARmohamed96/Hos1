@@ -83,14 +83,14 @@ class Inventory extends Component {
       filter: textFilter({
         comparator: Comparator.LIKE
       })
-    }, {
+    }, /*{
     dataField: 'edit',
     text: 'Edit',
     formatter: this.editButtonFormatter,
     formatExtraData: {
       src: this
     }
-  }, {
+  },*/ {
     dataField: 'delete',
     text: 'Delete',
     formatter: this.deleteButtonFormatter,

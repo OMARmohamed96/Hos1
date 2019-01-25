@@ -31,6 +31,16 @@ module.exports.addProduct = function (name, description, quantity) {
   });
 }
 
+module.exports.editProduct = function (id, newName, newDescription, newQuantity) {
+
+  return new Promise((resolve, reject) => {
+    Product.findOneAndUpdate({_id: id}, {name: newName, description: newDescription, quantity: newQuantity}, {new: true}).then(function(result) {
+      console.log('Product updated successfully!');
+      return resolve(result);
+    });
+  });
+}
+
 module.exports.removeProduct = function (id) {
   return new Promise ((resolve, reject) => {
     Product.findOneAndRemove({_id: id}).then(function(result) {

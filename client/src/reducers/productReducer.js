@@ -1,4 +1,4 @@
-import { GET_PRODUCTS, ADD_PRODUCT,  REMOVE_PRODUCT } from '../actions/types';
+import { GET_PRODUCTS, ADD_PRODUCT,  REMOVE_PRODUCT, EDIT_PRODUCT } from '../actions/types';
 
 const initialState = {
   products: [],
@@ -8,8 +8,6 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case GET_PRODUCTS:
-    console.log("Getting Products");
-    console.log(state.products);
       return {
         ...state,
         products: action.payload
@@ -18,6 +16,13 @@ export default function(state = initialState, action) {
       return {
         ...state,
         products: [action.payload, ...state.products].filter(product => product != undefined)
+      }
+    case EDIT_PRODUCT:
+      console.log(state.products);
+      console.log(action.payload);
+      return {
+        ...state,
+        products: state.products.map((product) => product._id === action.payload._id ? action.payload : product)
       };
     case REMOVE_PRODUCT:
       return {

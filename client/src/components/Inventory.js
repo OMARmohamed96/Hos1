@@ -6,7 +6,18 @@ import { connect } from 'react-redux';
 import { getProducts, addProduct, removeProduct } from '../actions/productActions';
 import PropTypes from 'prop-types';
 
+import {
+  Modal,
+  ModalHeader,
+  ModalBody,
+  Form,
+  FormGroup,
+  Label,
+  Input
+} from 'reactstrap';
+
 import NewProductModal from './NewProductModal';
+import EditProductModal from './EditProductModal';
 
 class Inventory extends Component {
 
@@ -34,7 +45,7 @@ class Inventory extends Component {
   editButtonFormatter(cell, row, rowIndex, formatExtraData) {
     return (
       <div>
-        <Button bsStyle="warning" onClick={() => formatExtraData.src.editProduct(row)}>Edit Product</Button>
+        <EditProductModal id={row._id}/>
       </div>
     );
   }
@@ -83,14 +94,14 @@ class Inventory extends Component {
       filter: textFilter({
         comparator: Comparator.LIKE
       })
-    }, /*{
+    }, {
     dataField: 'edit',
     text: 'Edit',
     formatter: this.editButtonFormatter,
     formatExtraData: {
       src: this
     }
-  },*/ {
+  }, {
     dataField: 'delete',
     text: 'Delete',
     formatter: this.deleteButtonFormatter,
@@ -103,7 +114,7 @@ class Inventory extends Component {
   render() {
     console.log("Inventory");
     const { products } = this.props.products;
-
+    console.log(products);
     return (
       <div>
         <NewProductModal />
@@ -121,7 +132,6 @@ class Inventory extends Component {
     )
   }
 }
-
 
 const mapStateToProps = (state) => ({
   products: state.products

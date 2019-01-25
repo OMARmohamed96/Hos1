@@ -29,4 +29,10 @@ router.get('/getProducts', (req, res) => {
     .catch(err => res.json({err, sucess: false}));
 });
 
+router.post('/editProduct', urlencodedParser, (req, res) => {
+  products.editProduct(req.body.id, req.body.productName, req.body.description, req.body.quantity)
+  .then(data => res.json({data, success: true}))
+  .catch(err => res.json({err, success: false}));
+});
+
 module.exports = router;

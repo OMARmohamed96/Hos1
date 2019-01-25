@@ -1,4 +1,4 @@
-import { GET_PRODUCTS, ADD_PRODUCT,  REMOVE_PRODUCT} from './types';
+import { GET_PRODUCTS, ADD_PRODUCT,  REMOVE_PRODUCT, EDIT_PRODUCT } from './types';
 
 export const getProducts = () => dispatch => {
   fetch('/products/getProducts')
@@ -47,5 +47,25 @@ export const removeProduct = productData => dispatch => {
         type: REMOVE_PRODUCT,
         payload: res.data._id
       })
+    );
+};
+
+export const editProduct = productData => dispatch => {
+  console.log("Here Editing");
+  fetch('/products/editProduct', {  // sending data url
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify(productData)
+  })
+    .then(res =>  res.json())
+    .then(res => {
+      console.log(res.data);
+      dispatch({
+        type: EDIT_PRODUCT,
+        payload: res.data
+      })
+    }
     );
 };
